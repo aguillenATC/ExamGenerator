@@ -1,6 +1,7 @@
 import pandas as pd
 import subprocess
 import os
+from pandas_ods_reader import read_ods
 
 from templates import *
 
@@ -17,6 +18,12 @@ if any(listado['DNI'].duplicated()) or any(listado['HASH'].duplicated()):
 	print("DNI or HASH duplicated")
 	exit("DNI or HASH duplicated")
 
+
+#read the questions (they should be in the sheet 1)
+questions = read_ods("Preguntas.ods", 1) 
+
+#TODO read solutions
+#solutions = read_ods("Preguntas.ods", 2) 
 
 
 tex_body = r'''
