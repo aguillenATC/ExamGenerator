@@ -1,7 +1,9 @@
 import pandas as pd
 import subprocess
 import os
+import random
 from pandas_ods_reader import read_ods
+
 
 from templates import *
 
@@ -62,6 +64,19 @@ for alumn in listado.as_matrix():
     #Insert specific part of the exam
     with open(file_name+'.tex','a') as f:
         f.write("Nombre alumno" + str(alumn))
+
+		#for each question set
+        for i in range(questions.shape[1]):
+			#get one question randomly
+            q = random.randint(0,questions.shape[0]-1)
+            while (questions.iloc[q][i] == None):
+                q = random.randint(0,questions.shape[0]-1)
+			
+            f.write(r''' \vspace{1cm} \textbf{Pregunta''' + str(i+1) +r'''} \\''')
+            f.write(questions.iloc[q][i])
+            f.write(r'''\vspace{1cm}''')
+
+
 
     #Insert the end of the document
     with open(file_name+'.tex','a') as f:
