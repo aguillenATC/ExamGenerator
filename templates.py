@@ -141,8 +141,7 @@ tex_subheader = r"""
 \pagenumbering{gobble}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \encabezado
-{\Large \bfseries \noindent Examen de Ingeniería de Servidores. \\ 
-Calificación máxima 10 puntos, mínima 4 puntos. Porcentaje sobre el total 40\%}
+{\Large \bfseries \noindent Calificación máxima 10 puntos, mínima 4 puntos. Porcentaje sobre el total 40\%}
 	
 \vspace{1mm}
 """
