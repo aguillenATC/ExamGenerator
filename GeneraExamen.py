@@ -63,7 +63,7 @@ for alumn in listado.as_matrix():
 
     #Insert specific part of the exam
     with open(file_name+'.tex','a') as f:
-        f.write("Nombre alumno" + str(alumn))
+        #f.write("Nombre alumno" + str(alumn))
 
 		#for each question set
         for i in range(questions.shape[1]):
@@ -72,9 +72,9 @@ for alumn in listado.as_matrix():
             while (questions.iloc[q][i] == None):
                 q = random.randint(0,questions.shape[0]-1)
 			
-            f.write(r''' \vspace{1cm} \textbf{Pregunta''' + str(i+1) +r'''} \\''')
-            f.write(questions.iloc[q][i])
-            f.write(r'''\vspace{1cm}''')
+            f.write(r''' \noindent \textbf{Pregunta''' + str(i+1) +r''' :} \\ \\''')
+            f.write(questions.iloc[q][i] + r'''\\ \\''')
+            #f.write(r''' \vspace{1cm} ''')
 
 
 
