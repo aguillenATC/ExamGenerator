@@ -77,6 +77,7 @@ tex_header = r'''%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \usepackage{listings}           % listado de fuentes
 \usepackage{multicol}           % varias columnas
 \usepackage{xcolor}             % gray
+\usepackage{float}              % place floating objects
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
