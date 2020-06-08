@@ -22,7 +22,7 @@ if any(listado['DNI'].duplicated()) or any(listado['HASH'].duplicated()):
 
 
 #read the questions (they should be in the sheet 1)
-questions = read_ods("Preguntas.ods", 1) 
+questions = read_ods("PreguntasISE.ods", 1) 
 
 #TODO read solutions
 #solutions = read_ods("Preguntas.ods", 2) 
@@ -37,7 +37,7 @@ html_body = ""
 
 base_url = "https://ugr.es/~aguillen/examenISE/"
 
-for alumn in listado.as_matrix():
+for alumn in listado.to_numpy():
     
     print(alumn)
 
@@ -67,20 +67,30 @@ for alumn in listado.as_matrix():
 
 		#for each question set
         for i in range(questions.shape[1]):
-			#get one question randomly
-            q = random.randint(0,questions.shape[0]-1)
+            
+            # get metadata about the question
+            q_params_str = questions.iloc[0][i]
+            
+
+            # Process metadata about the question
+            # string to dictionary 
+            q_params = dict((x.strip(), y.strip()) for x, y in (element.split(':') for element in q_params_str.split(', '))) 
+   
+
+            #get one question randomly (the first row contains metadata about the question)
+            q = random.randint(1,questions.shape[0]-1)
             while (questions.iloc[q][i] == None):
-                q = random.randint(0,questions.shape[0]-1)
+                q = random.randint(1,questions.shape[0]-1)
 			
-            f.write(r''' \noindent \textbf{Pregunta''' + str(i+1) +r''' :} \\ \\''')
-            f.write(questions.iloc[q][i] + r'''\\ \\''')
-            #f.write(r''' \vspace{1cm} ''')
+            f.write('\n' + r''' \noindent \textbf{Pregunta''' + str(i+1) +r''' (''' + str(q_params['Points']) + ''' Punto/s ) :} '''+'\n \n')
+            f.write(questions.iloc[q][i])
+            f.write(' \n \n'+ r''' \vspace{1cm} ''' + ' \n ')
 
 
 
     #Insert the end of the document
     with open(file_name+'.tex','a') as f:
-        f.write(tex_tail)
+        f.write('\n ' + tex_tail)
     
     # Generate PDF
     cmd = ['pdflatex', '-interaction', 'nonstopmode', file_name+'.tex']
@@ -89,7 +99,7 @@ for alumn in listado.as_matrix():
 
     retcode = proc.returncode
     if not retcode == 0:
-        os.unlink(file_name+'.pdf')
+        #os.unlink(file_name+'.pdf')
         raise ValueError('Error {} executing command: {}'.format(retcode, ' '.join(cmd))) 
 
     #os.unlink(file_name+'.tex')
