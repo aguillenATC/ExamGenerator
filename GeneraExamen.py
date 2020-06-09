@@ -9,6 +9,9 @@ from templates import *
 
 listado = pd.read_csv("/home/alberto/ListaGIADE-19-20.txt")
 
+# file to keep track of the questions asigned to each student
+q_logs = "./exam.qlog"
+
 #create hash code for each DNI
 for (idx,dni) in listado['DNI'].items():
 	listado.loc[idx,'HASH'] = str(abs(hash(str(dni))))
@@ -37,6 +40,10 @@ html_body = ""
 
 base_url = "https://ugr.es/~aguillen/examenISE/"
 
+# open log file
+f_log = open(q_logs,'w')
+
+
 for alumn in listado.to_numpy():
     
     print(alumn)
@@ -60,10 +67,11 @@ for alumn in listado.to_numpy():
 		tex_subheader_filled+
 		tex_body)
 
-
+    
     #Insert specific part of the exam
     with open(file_name+'.tex','a') as f:
         #f.write("Nombre alumno" + str(alumn))
+        f_log.write('\n'+str(alumn))
 
 		#for each question set
         for i in range(questions.shape[1]):
@@ -71,7 +79,7 @@ for alumn in listado.to_numpy():
             # get metadata about the question
             q_params_str = questions.iloc[0][i]
             
-
+            print(q_params_str)
             # Process metadata about the question
             # string to dictionary 
             q_params = dict((x.strip(), y.strip()) for x, y in (element.split(':') for element in q_params_str.split(', '))) 
@@ -82,12 +90,12 @@ for alumn in listado.to_numpy():
             while (questions.iloc[q][i] == None):
                 q = random.randint(1,questions.shape[0]-1)
 			
+            f_log.write(", P"+str(i)+"-"+str(q)) #log information
             f.write('\n' + r''' \noindent \textbf{Pregunta''' + str(i+1) +r''' (''' + str(q_params['Points']) + ''' Punto/s ) :} '''+'\n \n')
             f.write(questions.iloc[q][i])
             f.write(' \n \n'+ r''' \vspace{1cm} ''' + ' \n ')
 
-
-
+    
     #Insert the end of the document
     with open(file_name+'.tex','a') as f:
         f.write('\n ' + tex_tail)
@@ -105,6 +113,10 @@ for alumn in listado.to_numpy():
     #os.unlink(file_name+'.tex')
     #os.unlink(file_name+'.aux')
     #os.unlink(file_name+'.log')
+
+#end log 
+f_log.close() 
+
 
 os.system('rm *.tex')
 os.system('rm *.aux')
