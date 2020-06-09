@@ -121,12 +121,12 @@ tex_subheader = r"""
 \newcommand{\encabezado}{
 \begin{center}
 \bfseries 
-\begin{tabular}{*{3}{p{0.31\textwidth}}}
+\begin{tabular}{*{3}{p{0.5\textwidth}}}
 	\epsfig{file=logotipos/ugr-logo.png,height=12mm} & \multicolumn{1}{c}{\epsfig{file=logotipos/etsiit-logo.png,height=12mm}} & \multicolumn{1}{r}{\epsfig{file=logotipos/atc-logo.png,height=12mm}} \\\\
 	\\\\
 	\multicolumn{3}{c}{Ingeniería de Servidores \hfill Examen: Junio 2020} \\\\
 	\\\\
-	\multicolumn{1}{l}{Nombre:} \scriptsize $xApellidos$, $xNombre$ & & DNI: ***$xDNI$* \hspace{1mm} Grupo: \hspace{1mm} \\\\
+	\multicolumn{3}{l}{Nombre:} \scriptsize $xApellidos$, $xNombre$ \hfill DNI: ***$xDNI$* \hspace{1mm} \\\\
 	\hline
 \end{tabular}
 \end{center}
