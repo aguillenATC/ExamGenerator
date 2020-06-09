@@ -142,8 +142,16 @@ tex_subheader = r"""
 \pagenumbering{gobble}
  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \encabezado
-{\Large \bfseries \noindent Calificación máxima 10 puntos, mínima 4 puntos. Porcentaje sobre el total 40\%}
-	
+{\bfseries \noindent Calificación máxima 10 puntos, mínima 4 puntos. Porcentaje sobre el total 40\%. Intrucciones:}
+\begin{itemize}
+\item La duración del examen es de \textbf{2 horas y 30 minutos}
+\item Muestre en cada respuesta el \textbf{desarrollo completo de todos los pasos} seguidos hasta alcanzar la solución.
+\item Escriba las respuestas en \textbf{papel blanco} liso (sin cuadrículas o líneas) y use \textbf{bolígrafo azul o negro}.
+\item Se tendrán en cuenta las \textbf{faltas de ortografía} en la calificación final.
+\item Asegúrese de que al escanear o fotografiar los folios (numerados) con las \textbf{respuestas}, las capturas son totalmente \textbf{legibles}. Se recomienda el uso de aplicaciones móviles como CamScanner o similar en caso de no disponer de escáner de sobremesa.
+\end{itemize}
+
+
 \vspace{1mm}
 """
 
