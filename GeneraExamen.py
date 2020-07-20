@@ -7,7 +7,8 @@ from pandas_ods_reader import read_ods
 
 from templates import *
 
-listado = pd.read_csv("/home/alberto/ListaGIADE-19-20.txt")
+#listado = pd.read_csv("/home/alberto/ListaGIMADE-19-20.txt")
+listado = pd.read_csv("/home/alberto/ListadoGIMADE-Julio.csv")
 
 # file to keep track of the questions asigned to each student
 q_logs = "./exam.qlog"
@@ -38,7 +39,7 @@ tex_body = r'''
 
 html_body = ""
 
-base_url = "https://ugr.es/~aguillen/examenISE/"
+base_url = "https://ugr.es/~aguillen/examISE/"
 
 # open log file
 f_log = open(q_logs,'w')
@@ -91,7 +92,7 @@ for alumn in listado.to_numpy():
                 q = random.randint(1,questions.shape[0]-1)
 			
             f_log.write(", P"+str(i)+"-"+str(q)) #log information
-            f.write('\n' + r''' \noindent \textbf{Pregunta''' + str(i+1) +r''' (''' + str(q_params['Points']) + ''' Punto/s ) :} '''+'\n \n')
+            f.write('\n' + r''' \noindent \textbf{Pregunta ''' + str(i+1) +r''' (''' + str(q_params['Points']) + ''' Punto/s ) :} '''+'\n \n')
             f.write(questions.iloc[q][i])
             f.write(' \n \n'+ r''' \vspace{1cm} ''' + ' \n ')
 

@@ -124,7 +124,7 @@ tex_subheader = r"""
 \begin{tabular}{*{3}{p{0.5\textwidth}}}
 	\epsfig{file=logotipos/ugr-logo.png,height=12mm} & \multicolumn{1}{c}{\epsfig{file=logotipos/etsiit-logo.png,height=12mm}} & \multicolumn{1}{r}{\epsfig{file=logotipos/atc-logo.png,height=12mm}} \\\\
 	\\\\
-	\multicolumn{3}{c}{Ingeniería de Servidores \hfill Examen: Junio 2020} \\\\
+	\multicolumn{3}{c}{Ingeniería de Servidores \hfill Examen: Julio 2020} \\\\
 	\\\\
 	\multicolumn{3}{l}{Nombre:} \scriptsize $xApellidos$, $xNombre$ \hfill DNI: ***$xDNI$* \hspace{1mm} \\\\
 	\hline
@@ -147,7 +147,7 @@ tex_subheader = r"""
 \item La duración del examen es de \textbf{2 horas y 30 minutos}
 \item Muestre en cada respuesta el \textbf{desarrollo completo de todos los pasos} seguidos hasta alcanzar la solución.
 \item Escriba las respuestas en \textbf{papel blanco} liso (sin cuadrículas o líneas) y use \textbf{bolígrafo azul o negro}.
-\item Se tendrán en cuenta las \textbf{faltas de ortografía} en la calificación final.
+\item Se tendrán en cuenta las \textbf{faltas de ortografía} en la calificación final y no especificar las unidades.
 \item Asegúrese de que al escanear o fotografiar los folios (numerados) con las \textbf{respuestas}, las capturas son totalmente \textbf{legibles}. Se recomienda el uso de aplicaciones móviles como CamScanner o similar en caso de no disponer de escáner de sobremesa.
 \end{itemize}
 
